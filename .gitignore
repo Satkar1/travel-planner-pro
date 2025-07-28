@@ -1,0 +1,5 @@
+# See your existing .gitignore content
+node_modules/
+.next/
+.env.local
+*.env

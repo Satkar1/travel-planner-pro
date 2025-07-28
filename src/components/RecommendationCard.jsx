@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import { FaPlane, FaTrain, FaBus, FaCar, FaTaxi } from 'react-icons/fa';
 
 const modeIcons = {
@@ -8,9 +9,21 @@ const modeIcons = {
   'Taxi/Uber': <FaTaxi className="text-yellow-500" size={24} />,
 };
 
+const cardVariants = {
+  hover: {
+    y: -5,
+    boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
+  }
+};
+
 export default function RecommendationCard({ option }) {
   return (
-    <div className="bg-white rounded-xl shadow-md overflow-hidden">
+    <motion.div 
+      className="bg-white/90 backdrop-blur-sm rounded-xl shadow-md overflow-hidden border border-gray-200"
+      whileHover="hover"
+      variants={cardVariants}
+      transition={{ duration: 0.2 }}
+    >
       <div className="p-6">
         <div className="flex items-center space-x-4 mb-3">
           {modeIcons[option.mode] || modeIcons['Taxi/Uber']}
@@ -46,6 +59,6 @@ export default function RecommendationCard({ option }) {
         
         <p className="mt-4 text-gray-600">{option.description}</p>
       </div>
-    </div>
+    </motion.div>
   );
 }
